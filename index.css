@@ -35,3 +35,22 @@ ul{
     border-radius: 8px;
     background-color: #fff;
 }
+.breadcrumb-container {background-color:  #fff;
+padding: 14px; 24px;
+border-radius: 12px; 
+max-width: 1600px;
+box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+margin: 20px; 
+}
+.breadcrumb li::after {
+ content: " // ";
+margin-left: 0 10px;
+color: #999;
+}
+.breadcrumb li:last-child::after {
+content: "";
+}.breadcrumb a {
+  text-decoration: none;
+  color: #333;
+}
+
