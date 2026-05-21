@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funções JavaScript</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background: #f4f4f4;
+        }
+
+        header{
+            background: #ff914d;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container{
+            width: 90%;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .card{
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2{
+            margin-bottom: 15px;
+            color: #ff914d;
+        }
+
+        input{
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button{
+            padding: 10px 15px;
+            border: none;
+            background: #ff914d;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover{
+            background: #e87b35;
+        }
+
+        .resultado{
+            margin-top: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        footer{
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>Funções em JavaScript</h1>
+    <p>Atividade baseada no modelo do site de adoção</p>
+</header>
+
+<div class="container">
+
+    <!-- 1 -->
+    <div class="card">
+        <h2>1 - Maior e Menor</h2>
+
+        <input type="number" id="n1" placeholder="Número 1">
+        <input type="number" id="n2" placeholder="Número 2">
+        <input type="number" id="n3" placeholder="Número 3">
+        <input type="number" id="n4" placeholder="Número 4">
+        <input type="number" id="n5" placeholder="Número 5">
+
+        <br>
+
+        <button onclick="executarMaiorMenor()">
+            Verificar
+        </button>
+
+        <div class="resultado" id="resultado1"></div>
+    </div>
+
+    <!-- 2 -->
+    <div class="card">
+        <h2>2 - Vogal ou Não</h2>
+
+        <input type="text" id="vogal" maxlength="1" placeholder="Digite uma letra">
+
+        <br>
+
+        <button onclick="executarVogal()">
+            Verificar
+        </button>
+
+        <div class="resultado" id="resultado2"></div>
+    </div>
+
+    <!-- 3 -->
+    <div class="card">
+        <h2>3 - Limites</h2>
+
+        <input type="number" id="limiteInferior" placeholder="Limite Inferior">
+        <input type="number" id="limiteSuperior" placeholder="Limite Superior">
+
+        <br>
+
+        <button onclick="executarLimites()">
+            Mostrar Pares
+        </button>
+
+        <div class="resultado" id="resultado3"></div>
+    </div>
+
+    <!-- 4 -->
+    <div class="card">
+        <h2>4 - Ordem Crescente</h2>
+
+        <input type="number" id="o1" placeholder="Número 1">
+        <input type="number" id="o2" placeholder="Número 2">
+        <input type="number" id="o3" placeholder="Número 3">
+
+        <br>
+
+        <button onclick="executarOrdem()">
+            Ordenar
+        </button>
+
+        <div class="resultado" id="resultado4"></div>
+    </div>
+
+    <!-- 5 -->
+    <div class="card">
+        <h2>5 - Positivo ou Negativo</h2>
+
+        <input type="number" id="positivoNegativo" placeholder="Digite um número">
+
+        <br>
+
+        <button onclick="executarPositivoNegativo()">
+            Verificar
+        </button>
+
+        <div class="resultado" id="resultado5"></div>
+    </div>
+
+    <!-- 6 -->
+    <div class="card">
+        <h2>6 - Par ou Ímpar</h2>
+
+        <input type="number" id="parImpar" placeholder="Digite um número">
+
+        <br>
+
+        <button onclick="executarParImpar()">
+            Verificar
+        </button>
+
+        <div class="resultado" id="resultado6"></div>
+    </div>
+
+</div>
+
+<footer>
+    <p>Desenvolvido por Bruno Amorim</p>
+</footer>
+
+<script>
+
+    // 1
+    function MAIOR_MENOR(a, b, c, d, e){
+
+        let numeros = [a, b, c, d, e];
+
+        let maior = Math.max(...numeros);
+        let menor = Math.min(...numeros);
+
+        return `Maior: ${maior} | Menor: ${menor}`;
+    }
+
+    function executarMaiorMenor(){
+
+        let a = Number(document.getElementById("n1").value);
+        let b = Number(document.getElementById("n2").value);
+        let c = Number(document.getElementById("n3").value);
+        let d = Number(document.getElementById("n4").value);
+        let e = Number(document.getElementById("n5").value);
+
+        document.getElementById("resultado1").innerHTML =
+            MAIOR_MENOR(a, b, c, d, e);
+    }
+
+    // 2
+    function VOGAL(c){
+
+        let vogais = ["a","e","i","o","u"];
+
+        if(vogais.includes(c.toLowerCase())){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    function executarVogal(){
+
+        let letra = document.getElementById("vogal").value;
+
+        let resultado = VOGAL(letra);
+
+        document.getElementById("resultado2").innerHTML =
+            resultado == 1
+            ? "É uma vogal"
+            : "Não é uma vogal";
+    }
+
+    // 3
+    function LIMITES(li, ls){
+
+        let pares = [];
+        let soma = 0;
+
+        for(let i = li + 1; i < ls; i++){
+
+            if(i % 2 == 0){
+                pares.push(i);
+                soma += i;
+            }
+        }
+
+        return `Pares: ${pares.join(", ")} | Soma: ${soma}`;
+    }
+
+    function executarLimites(){
+
+        let li = Number(document.getElementById("limiteInferior").value);
+        let ls = Number(document.getElementById("limiteSuperior").value);
+
+        document.getElementById("resultado3").innerHTML =
+            LIMITES(li, ls);
+    }
+
+    // 4
+    function ORDEM(a, b, c){
+
+        let numeros = [a, b, c];
+
+        numeros.sort((x, y) => x - y);
+
+        return numeros;
+    }
+
+    function executarOrdem(){
+
+        let a = Number(document.getElementById("o1").value);
+        let b = Number(document.getElementById("o2").value);
+        let c = Number(document.getElementById("o3").value);
+
+        document.getElementById("resultado4").innerHTML =
+            ORDEM(a, b, c).join(" - ");
+    }
+
+    // 5
+    function POSITIVO_NEGATIVO(x){
+
+        return x >= 0;
+    }
+
+    function executarPositivoNegativo(){
+
+        let x = Number(document.getElementById("positivoNegativo").value);
+
+        let resultado = POSITIVO_NEGATIVO(x);
+
+        document.getElementById("resultado5").innerHTML =
+            resultado
+            ? "Número Positivo"
+            : "Número Negativo";
+    }
+
+    // 6
+    function PAR_IMPAR(x){
+
+        return x % 2 == 0;
+    }
+
+    function executarParImpar(){
+
+        let x = Number(document.getElementById("parImpar").value);
+
+        let resultado = PAR_IMPAR(x);
+
+        document.getElementById("resultado6").innerHTML =
+            resultado
+            ? "Número Par"
+            : "Número Ímpar";
+    }
+
+</script>
+
+</body>
+</html>
