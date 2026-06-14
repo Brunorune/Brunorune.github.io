@@ -188,7 +188,35 @@
         <div class="resultado" id="resultado6"></div>
     </div>
 
-</div>
+
+    <!-- 7 -->
+    <div class="card">
+        <h2>7 - Cadastro de Usuário</h2>
+        <input type="text" id="nome" placeholder="Nome Completo"><br>
+        <input type="email" id="email" placeholder="E-mail"><br>
+        <input type="password" id="senha" placeholder="Senha"><br>
+        <button onclick="validarCadastro()">Cadastrar</button>
+        <div class="resultado" id="resultado7"></div>
+    </div>
+
+    <!-- 8 -->
+    <div class="card">
+        <h2>8 - Formulário de Contato</h2>
+        <input type="text" id="assunto" placeholder="Assunto"><br>
+        <input type="text" id="Email para Retorno" placeholder="Email Para retorno"><br>
+        <button onclick="enviarContato()">Enviar</button>
+        <div class="resultado" id="resultado8"></div>
+    </div>
+
+    <div class="card">
+        <h2>9 - Sugestoes</h2>
+        <input type="text" id="Escreva Aqui" placeholder="Assunto"><br>
+        <input type="text" id="Seu Email" placeholder="Email Para retorno"><br>
+        <button onclick="enviarContato()">Enviar</button>
+        <div class="resultado" id="resultado8"></div>
+    </div>
+
+   
 
 <script>
 
@@ -320,6 +348,62 @@
             ? "Número Par"
             : "Número Ímpar";
     }
+
+
+
+// 7 - Cadastro
+function validarCadastro(){
+    let nome = document.getElementById("nome").value;
+    let email = document.getElementById("email").value;
+    let senha = document.getElementById("senha").value;
+
+    if(nome == "" || email == "" || senha == ""){
+        document.getElementById("resultado7").innerHTML = "Preencha todos os campos!";
+        return;
+    }
+
+    if(!email.includes("@")){
+        document.getElementById("resultado7").innerHTML = "Digite um e-mail válido!";
+        return;
+    }
+
+    if(senha.length < 6){
+        document.getElementById("resultado7").innerHTML = "A senha deve ter pelo menos 6 caracteres!";
+        return;
+    }
+
+    document.getElementById("resultado7").innerHTML = "Cadastro realizado com sucesso!";
+}
+
+// 8 - Contato
+function enviarContato(){
+    let Seu Email Para Retorno = document.getElementById("assunto").value;
+    let mensagem = document.getElementById("mensagem").value;
+
+    if(assunto == "" || mensagem == ""){
+        document.getElementById("resultado8").innerHTML = "Preencha todos os campos!";
+        return;
+    }
+
+    document.getElementById("resultado8").innerHTML = "Mensagem enviada com sucesso!";
+}
+
+function Sugestoes(){
+
+let mensagem = document.getElementById("mensagem").value;
+
+if(Sugestoes == "" || mensagem == ""){
+    document.getElementById("resultado8").innerHTML =
+        "Preencha todos os campos!";
+    return;
+}
+
+document.getElementById("resultado8").innerHTML =
+    "Mensagem enviada com sucesso!";
+
+}
+
+
 
 </script>
 
